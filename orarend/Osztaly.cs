@@ -34,57 +34,40 @@ namespace orarend
                 case 'A':
                     this.osztalyíTipu = 'A';
                     this.oraszam = new Dictionary<string, int>();
-                        oraszam.Add("Matematika", 5);
-                        oraszam.Add("Irodalom", 3);
-                        oraszam.Add("Nyelvtan", 2);
-                        oraszam.Add("Angol", 2);
-                        oraszam.Add("Tesneveles", 3);
-                        oraszam.Add("Torténelem", 3); 
-                        oraszam.Add("Informatika", 2);
+                        oraszam.Add("Labor", 4);
+                        oraszam.Add("Tesi", 4);
+                        oraszam.Add("Matek", 4);
+                        oraszam.Add("Angol", 3);
+                        oraszam.Add("Magyar", 4);
+                        oraszam.Add("Töri", 4); 
+                        oraszam.Add("Fizika", 1);
+                        oraszam.Add("Biosz", 1);
                     break;
                 case 'B':
                     this.osztalyíTipu = 'B';
                     this.oraszam = new Dictionary<string, int>();
-                    oraszam.Add("Matematika", 5);
-                    oraszam.Add("Irodalom", 3);
-                    oraszam.Add("Nyelvtan", 2);
-                    oraszam.Add("Angol", 2);
-                    oraszam.Add("Tesneveles", 3);
-                    oraszam.Add("Torténelem", 3);
-                    oraszam.Add("Informatika", 2);
+                    oraszam.Add("Web", 2);
+                    oraszam.Add("Tesi", 4);
+                    oraszam.Add("Matek", 4);
+                    oraszam.Add("Angol", 3);
+                    oraszam.Add("Magyar", 4);
+                    oraszam.Add("Töri", 4);
+                    oraszam.Add("Prog", 2);
+                    oraszam.Add("Hálózat", 2);
+                    break;
                     break;
                 case 'C':
                     this.osztalyíTipu = 'C';
                     this.oraszam = new Dictionary<string, int>();
-                    oraszam.Add("Matematika", 5);
-                    oraszam.Add("Irodalom", 3);
-                    oraszam.Add("Nyelvtan", 2);
+                    oraszam.Add("Labor", 3);
+                    oraszam.Add("Tesi", 4);
+                    oraszam.Add("Matek", 4);
                     oraszam.Add("Angol", 2);
-                    oraszam.Add("Tesneveles", 3);
-                    oraszam.Add("Torténelem", 3);
-                    oraszam.Add("Informatika", 2);
+                    oraszam.Add("Magyar", 4);
+                    oraszam.Add("Töri", 4);
+                    oraszam.Add("Fizika", 2);
+                    oraszam.Add("Biosz", 2);
                     break;
-                case 'D':
-                    this.osztalyíTipu = 'D';
-                    this.oraszam = new Dictionary<string, int>();
-                    oraszam.Add("Matematika", 5);
-                    oraszam.Add("Irodalom", 3);
-                    oraszam.Add("Nyelvtan", 2);
-                    oraszam.Add("Angol", 2);
-                    oraszam.Add("Tesneveles", 3);
-                    oraszam.Add("Torténelem", 3);
-                    oraszam.Add("Informatika", 2);
-                    break;
-                case 'E':
-                    this.osztalyíTipu = 'E';
-                    this.oraszam = new Dictionary<string, int>();
-                    oraszam.Add("Matematika", 5);
-                    oraszam.Add("Irodalom", 3);
-                    oraszam.Add("Nyelvtan", 2);
-                    oraszam.Add("Angol", 2);
-                    oraszam.Add("Tesneveles", 3);
-                    oraszam.Add("Torténelem", 3);
-                    oraszam.Add("Informatika", 2);
                     break;
                 default:
                     this.osztalyíTipu = 'Z'; // ha nem jó, akkor ezt írja ki
