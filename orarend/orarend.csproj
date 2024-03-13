@@ -58,6 +58,7 @@
     <Compile Include="Orarend.xaml.cs">
       <DependentUpon>Orarend.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Terem.cs" />
     <Compile Include="utility.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -10,9 +10,9 @@ namespace orarend
     {
         private string tantargyNev;
         private string tanar;
-        private string terem;
+        private Terem terem;
 
-        public Ora(string tantargyNev, string tanar, string terem)
+        public Ora(string tantargyNev, string tanar, Terem terem)
         {
             this.tantargyNev = tantargyNev;
             this.tanar = tanar;
@@ -21,11 +21,11 @@ namespace orarend
 
         public string TantargyNev { get => tantargyNev; set => tantargyNev = value; }
         public string Tanar { get => tanar; set => tanar = value; }
-        public string Terem { get => terem; set => terem = value; }
+        public Terem Terem { get => terem; set => terem = value; }
 
         public override string ToString()
         {
-            return $"{this.tantargyNev} óra; {this.terem} teremben, {this.tanar}-al.";
+            return $"{this.tantargyNev} óra; {this.terem.Name} teremben, {this.tanar}-al.";
         }
     }
 }
