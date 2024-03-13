@@ -14,11 +14,18 @@ namespace orarend
         List<int> list = new List<int>() {4,4,4,4,4 };
         List<string> elérhetőtantárgyak;
    
-
+        public void tárgyak(Osztaly s)
+        {
+            elérhetőtantárgyak = new List<string>();
+            foreach(KeyValuePair<string,int> p in s.Oraszam)
+            {
+                elérhetőtantárgyak.Add(p.Key);
+            }
+        }
 
         public void feltöltés(Osztaly s)
         {
-           elérhetőtantárgyak= new List<string>() { "Irodalom", "Nyelvtan", "Angol", "Tesneveles", "Torténelem", "Informatika" };
+            tárgyak(s);
             classroomselector(s);
             for(int i = 1; i < 6; i++)
             {
