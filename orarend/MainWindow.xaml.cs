@@ -21,68 +21,32 @@ namespace orarend
     /// <
     public partial class MainWindow : Window
     {
-        Orarend orarend = new Orarend();
-        List<Osztaly> osz = new List<Osztaly>();
-        Osztaly A = new Osztaly("12A", new List<Nap>());
-        Osztaly B = new Osztaly("12B", new List<Nap>());
-        Osztaly C = new Osztaly("12C", new List<Nap>());
-        utility utility = new utility();
+    
+
+      
 
         public MainWindow()
         {
             InitializeComponent();
             betöltés();
         }
+
+
         public void betöltés()
         {
-            A.OraszamMegadas();
-            B.OraszamMegadas();
-            C.OraszamMegadas();
-            utility.feltöltés(A);
-            utility.feltöltés(B);
-            utility.feltöltés(C);
+           
             osztalyokbox.Items.Add("12A");
 			osztalyokbox.Items.Add("12B");
 			osztalyokbox.Items.Add("12C");
             osztalyokbox.SelectedIndex = 0;
 
-			/*Console.WriteLine("A");
-            foreach (Nap k in A.Orarend)
-            {
-                
-                foreach (var t in k.Orak)
-                {
-                    
-                    Console.WriteLine(t);
-                }
-                Console.WriteLine("______");
-            }
-            Console.WriteLine("B");
-            foreach (Nap k in B.Orarend)
-            {
-
-                foreach (var t in k.Orak)
-                {
-
-                    Console.WriteLine(t);
-                }
-                Console.WriteLine("______");
-            }
-            Console.WriteLine("c");
-            foreach (Nap k in C.Orarend)
-            {
-
-                foreach (var t in k.Orak)
-                {
-
-                    Console.WriteLine(t);
-                }
-                Console.WriteLine("______");
-            */
+	
 		}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            Orarend orarend = new Orarend(osztalyokbox.SelectedItem.ToString());
             orarend.Show();
         }
    
