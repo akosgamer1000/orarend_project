@@ -77,6 +77,15 @@ namespace orarend
 
             }
         }
+        public void napiorswitch(Osztaly s, Osztaly k, Osztaly i)
+        {
+            switch (melyosz)
+            {
+                case 0:
+                    napior(s,c);
+                    break;
+            }
+        }
         public List<Ora> napior(int caunt,Osztaly s)
         {
             Random r= new Random();
