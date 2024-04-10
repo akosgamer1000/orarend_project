@@ -59,9 +59,8 @@ namespace orarend
         {
             Random r= new Random();
             List<Ora> list = new List<Ora>();
-            int randomcaunt = caunt - 1;
-            s.Oraszam["Matek"]--;
-            list.Add(new Ora("Matematika","tanár",new Terem("Matek","szak")));
+            int randomcaunt = caunt;
+            
             for( int i = 0;i < randomcaunt; i++)
             {
                 
