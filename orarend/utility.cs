@@ -11,15 +11,17 @@ namespace orarend
 
 
         string classroom = "";
-        List<int> list = new List<int>() {4,4,4,4,4 };
+        List<int> list = new List<int>() {5,5,5,5,5 };
         List<string> elérhetőtantárgyak;
    
 
 
         public void feltöltés(Osztaly s)
         {
-           elérhetőtantárgyak= new List<string>() { "Irodalom", "Nyelvtan", "Angol", "Tesneveles", "Torténelem", "Informatika" };
+			elérhetőtantárgyak = new List<string>();
+			fel(s);
             classroomselector(s);
+           
             for(int i = 1; i < 6; i++)
             {
                 Nap u = new Nap(i, napior(list[i-1],s));
@@ -27,7 +29,16 @@ namespace orarend
                
             }
         }
-
+        public void fel(Osztaly s)
+        {
+            foreach(KeyValuePair<string,int> kvp in s.Oraszam)
+            {
+                if (!elérhetőtantárgyak.Contains(kvp.Key))
+                {
+                    elérhetőtantárgyak.Add(kvp.Key);
+                }
+            }
+        }
         public void classroomselector(Osztaly s)
         {
             switch (s.Nev)
@@ -49,15 +60,15 @@ namespace orarend
             Random r= new Random();
             List<Ora> list = new List<Ora>();
             int randomcaunt = caunt - 1;
-            s.Oraszam["Matematika"]--;
-            list.Add(new Ora("Matematika","tanár",classroom));
+            s.Oraszam["Matek"]--;
+            list.Add(new Ora("Matematika","tanár",new Terem("Matek","szak")));
             for( int i = 0;i < randomcaunt; i++)
             {
                 
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 string kiválaszott = elérhetőtantárgyak[rx];
                 s.Oraszam[kiválaszott]--;
-                list.Add(new Ora(kiválaszott, "tanár", classroom));
+                list.Add(new Ora(kiválaszott, "tanár", new Terem(kiválaszott,"szak")));
                 check(s);
             }
 
