@@ -54,9 +54,7 @@ namespace orarend
             A.OraszamMegadas();
             B.OraszamMegadas();
             C.OraszamMegadas();
-            utility.feltöltés(A);
-            utility.feltöltés(B);
-            utility.feltöltés(C);
+            utility.váltás(A, B, C);
         }
 
         void GridBetoltes()
