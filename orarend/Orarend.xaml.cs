@@ -42,6 +42,7 @@ namespace orarend
             Betöltés();
 			GridBetoltes();
             OrarendBetoltese();
+            IdopontEsNapokJelzese();
 		}
 
 
@@ -73,11 +74,46 @@ namespace orarend
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-         
-
-
             Content = grid;
+
         }
+
+        void IdopontEsNapokJelzese()
+        {
+            
+            List<string> ids = new List<string>();
+            ids.Add("Hétfő");
+            ids.Add("Kedd");
+            ids.Add("Szerda");
+            ids.Add("Csütörtök");
+            ids.Add("Péntek");
+            for(int i = 0; i < 5;i++)
+            {
+				TextBlock tb = new TextBlock()
+				{
+					TextAlignment = TextAlignment.Center,
+					VerticalAlignment = VerticalAlignment.Center
+				};
+				tb.Inlines.Add(new Bold(new Run(ids[i])));
+
+				int rowIndex = 0;
+
+				int columnIndex = i;
+				Grid.SetRow(tb, rowIndex);
+				Grid.SetColumn(tb, columnIndex);
+				Border border = new Border
+				{
+					BorderBrush = Brushes.Black,
+					BorderThickness = new Thickness(1),
+					Child = tb
+				};
+				Grid.SetRow(border, rowIndex);
+				Grid.SetColumn(border, columnIndex);
+				grid.Children.Add(border);
+			}
+           
+
+		}
 
         void OrarendBetoltese()
         {
@@ -97,7 +133,7 @@ namespace orarend
                             {
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
+                            int rowIndex = grid.Children.Count / columnCount+1;
                             int columnIndex = grid.Children.Count % columnCount;
                          
                             Grid.SetRow(tb, rowIndex);
@@ -124,7 +160,7 @@ namespace orarend
                             {
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
+                            int rowIndex = grid.Children.Count / columnCount+1;
                             int columnIndex = grid.Children.Count % columnCount;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
@@ -150,15 +186,17 @@ namespace orarend
                             {
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
+                            int rowIndex = grid.Children.Count / columnCount+1;
                             int columnIndex = grid.Children.Count % columnCount;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
-                            Border border = new Border();
-                            border.BorderBrush = Brushes.Black;
-                            border.BorderThickness = new Thickness(1);
-                            border.Child = tb;
-                            Grid.SetRow(border, rowIndex);
+							Border border = new Border
+							{
+								BorderBrush = Brushes.Black,
+								BorderThickness = new Thickness(1),
+								Child = tb
+							};
+							Grid.SetRow(border, rowIndex);
                             Grid.SetColumn(border, columnIndex);
                             grid.Children.Add(border);
                         }
