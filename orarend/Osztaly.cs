@@ -55,7 +55,7 @@ namespace orarend
                     oraszam.Add("Prog", 2);
                     oraszam.Add("Hálózat", 2);
                     break;
-                    break;
+                    
                 case 'C':
                     this.osztalyíTipu = 'C';
                     this.oraszam = new Dictionary<string, int>();
@@ -68,7 +68,7 @@ namespace orarend
                     oraszam.Add("Fizika", 2);
                     oraszam.Add("Biosz", 2);
                     break;
-                    break;
+                   
                 default:
                     this.osztalyíTipu = 'Z'; // ha nem jó, akkor ezt írja ki
                     break;
