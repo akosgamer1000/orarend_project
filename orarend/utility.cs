@@ -18,7 +18,11 @@ namespace orarend
         {
             {"info","018" },
             {"Labor","09" },
-            {"Tesi","004" }
+            {"Tesi","004" },
+            {"Web","018" },
+            {"Prog","018" },
+            {"Hálózat","018" },
+
         };
 
 
