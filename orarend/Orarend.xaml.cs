@@ -32,16 +32,17 @@ namespace orarend
         {
             Height = 300,
             Width = 600,
-
+            
         };
 
         public Orarend(string choice) : base()
 		{
-			InitializeComponent();
             Choice = choice;
+			InitializeComponent();
             Betöltés();
 			GridBetoltes();
             OrarendBetoltese();
+            IdopontEsNapokJelzese();
 		}
 
 
@@ -68,15 +69,91 @@ namespace orarend
                 grid.RowDefinitions.Add(new RowDefinition());
 
             }
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 6; j++)
             {
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
+            Grid.SetRow(grid, 1);
+            MainGrid.Children.Add(grid);
+            osztalyNev.Text = Choice;
+            
+           
 
-         
+        }
+
+        void IdopontEsNapokJelzese()
+        {
+
+            List<string> ids = new List<string>
+            {
+                "Hétfő",
+                "Kedd",
+                "Szerda",
+                "Csütörtök",
+                "Péntek"
+            };
+            for (int i = 0; i < 5;i++)
+            {
+				TextBlock tb = new TextBlock()
+				{
+					TextAlignment = TextAlignment.Center,
+					VerticalAlignment = VerticalAlignment.Center
+				};
+				tb.Inlines.Add(new Bold(new Run(ids[i])));
+
+				int rowIndex = 0;
+
+				int columnIndex = i+1;
+				Grid.SetRow(tb, rowIndex);
+				Grid.SetColumn(tb, columnIndex);
+				Border border = new Border
+				{
+					BorderBrush = Brushes.Black,
+					BorderThickness = new Thickness(1),
+					Child = tb
+				};
+				Grid.SetRow(border, rowIndex);
+				Grid.SetColumn(border, columnIndex);
+				grid.Children.Add(border);
+			}
+
+            List<string> orak = new List<string>
+            {
+                "8.00-8.45",
+                "8.55-9.40",
+                "9.55-10.40",
+                "10.50-11.35",
+                "11.45-12.30",
+                "12.50-13.35",
+                "13.45-14.30",
+                "14.35-15.10"
+            };
+            for (int i = 0; i < 5; i++)
+            {
+                TextBlock tb = new TextBlock()
+                {
+                    TextAlignment = TextAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+                tb.Inlines.Add(new Bold(new Run(orak[i])));
+
+                int rowIndex = i+1;
+
+                int columnIndex = 0;
+                Grid.SetRow(tb, rowIndex);
+                Grid.SetColumn(tb, columnIndex);
+                Border border = new Border
+                {
+                    BorderBrush = Brushes.Black,
+                    BorderThickness = new Thickness(1),
+                    Child = tb
+                };
+                Grid.SetRow(border, rowIndex);
+                Grid.SetColumn(border, columnIndex);
+                grid.Children.Add(border);
+            }
 
 
-            Content = grid;
         }
 
         void OrarendBetoltese()
@@ -95,17 +172,42 @@ namespace orarend
                         {
                             TextBlock tb = new TextBlock
                             {
+                                TextAlignment = TextAlignment.Center,
+                                VerticalAlignment = VerticalAlignment.Center,
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
-                            int columnIndex = grid.Children.Count % columnCount;
-                         
+
+                            int clickCount = 0;
+                            tb.MouseLeftButtonDown += (sender, e) =>
+                            {
+                                clickCount++;
+                                switch (clickCount)
+                                {
+                                    case 1:
+                                        tb.Text = t.Terem.Name;
+                                        break;
+                                    case 2:
+                                        tb.Text = t.Tanar;
+                                        break;
+                                    case 3:
+                                        tb.Text = t.TantargyNev;
+                                        clickCount = 0;
+                                        break;
+                                }
+                            };
+
+
+                            int rowIndex = grid.Children.Count / columnCount + 1;
+                            int columnIndex = grid.Children.Count % columnCount + 1;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
-                            Border border = new Border();
-                            border.BorderBrush = Brushes.Black; 
-                            border.BorderThickness = new Thickness(1);
-                            border.Child = tb;
+
+                            Border border = new Border
+                            {
+                                BorderBrush = Brushes.Black,
+                                BorderThickness = new Thickness(1),
+                                Child = tb
+                            };
                             Grid.SetRow(border, rowIndex);
                             Grid.SetColumn(border, columnIndex);
                             grid.Children.Add(border);
@@ -122,16 +224,43 @@ namespace orarend
                         {
                             TextBlock tb = new TextBlock
                             {
+                                TextAlignment = TextAlignment.Center,
+                                VerticalAlignment = VerticalAlignment.Center,
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
-                            int columnIndex = grid.Children.Count % columnCount;
+
+                            int clickCount = 0;
+
+                            tb.MouseLeftButtonDown += (sender, e) =>
+                            {
+                                clickCount++;   
+                                switch (clickCount)
+                                {
+                                    case 1:
+                                        tb.Text = t.Terem.Name;
+                                        break;
+                                    case 2:
+                                        tb.Text = t.Tanar;
+                                        break;
+                                    case 3:
+                                        tb.Text = t.TantargyNev;
+                                        clickCount = 0;
+                                        break;
+                                }
+                            };
+
+
+                            int rowIndex = grid.Children.Count / columnCount + 1;
+                            int columnIndex = grid.Children.Count % columnCount + 1;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
-                            Border border = new Border();
-                            border.BorderBrush = Brushes.Black;
-                            border.BorderThickness = new Thickness(1);
-                            border.Child = tb;
+
+                            Border border = new Border
+                            {
+                                BorderBrush = Brushes.Black,
+                                BorderThickness = new Thickness(1),
+                                Child = tb
+                            };
                             Grid.SetRow(border, rowIndex);
                             Grid.SetColumn(border, columnIndex);
                             grid.Children.Add(border);
@@ -148,19 +277,46 @@ namespace orarend
                         {
                             TextBlock tb = new TextBlock
                             {
+                                TextAlignment = TextAlignment.Center,
+                                VerticalAlignment = VerticalAlignment.Center,
                                 Text = t.TantargyNev
                             };
-                            int rowIndex = grid.Children.Count / columnCount;
-                            int columnIndex = grid.Children.Count % columnCount;
+
+                            int clickCount = 0;
+                            tb.MouseLeftButtonDown += (sender, e) =>
+                            {
+                                clickCount++;
+                                switch (clickCount)
+                                {
+                                    case 1:
+                                        tb.Text = t.Terem.Name;
+                                        break;
+                                    case 2:
+                                        tb.Text = t.Tanar;
+                                        break;
+                                    case 3:
+                                        tb.Text = t.TantargyNev;
+                                        clickCount = 0;
+                                        break;
+                                }
+                            };
+
+
+                            int rowIndex = grid.Children.Count / columnCount + 1;
+                            int columnIndex = grid.Children.Count % columnCount + 1;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
-                            Border border = new Border();
-                            border.BorderBrush = Brushes.Black;
-                            border.BorderThickness = new Thickness(1);
-                            border.Child = tb;
+
+                            Border border = new Border
+                            {
+                                BorderBrush = Brushes.Black,
+                                BorderThickness = new Thickness(1),
+                                Child = tb
+                            };
                             Grid.SetRow(border, rowIndex);
                             Grid.SetColumn(border, columnIndex);
                             grid.Children.Add(border);
+
                         }
                     }
                     break;

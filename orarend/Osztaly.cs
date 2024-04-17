@@ -68,7 +68,7 @@ namespace orarend
                     oraszam.Add("Fizika", 2);
                     oraszam.Add("Biosz", 2);
                     break;
-                    break;
+                   
                 default:
                     this.osztalyíTipu = 'Z'; // ha nem jó, akkor ezt írja ki
                     break;
