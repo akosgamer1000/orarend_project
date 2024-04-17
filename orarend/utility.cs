@@ -24,6 +24,22 @@ namespace orarend
             {"Hálózat","018" },
 
         };
+        Dictionary<string, string> tanár = new Dictionary<string, string>()
+        {
+            {"Matek","Bárczay Emese"},
+            {"info","Bálint István" },
+            {"Labor","Rogán Antal" },
+            {"Tesi","Kovács Miklos" },
+            {"Web","Bálint István" },
+            {"Prog","Bálint István" },
+            {"Angol","Csillag Anna" },
+            {"Töri","Bálint György" },
+            {"Fizika","György Miklós" },
+            {"Biosz","Miklós György" },
+            {"Magyar","Hajagos Máté" },
+            {"Hálózat","Bálint István" }
+
+        };
 
 
 
@@ -115,7 +131,7 @@ namespace orarend
             Random r= new Random();
             List<Ora> list = new List<Ora>();
             int randomcaunt = caunt;
-            string kiválaszott = "";
+            string kiválaszott = "s";
             for ( int i = 0;i < randomcaunt; i++)
             {
                 List <string> l = new List<string>(elérhetőtantárgyak);
@@ -132,7 +148,13 @@ namespace orarend
                     classroom = map[kiválaszott];
                 }
                 s.Oraszam[kiválaszott]--;
-                list.Add(new Ora(kiválaszott, "tanár", new Terem(classroom,szake)));
+               
+
+                list.Add(new Ora(kiválaszott, tanár[kiválaszott], new Terem(classroom,szake)));
+                
+                
+                    Console.WriteLine(kiválaszott);
+                
                 classroomselector(s);
                 check(s);
             }
@@ -163,7 +185,7 @@ namespace orarend
                     classroom = map[kiválaszott];
                 }
                 s.Oraszam[kiválaszott]--;
-                list.Add(new Ora(kiválaszott, "tanár", new Terem(classroom, szake)));
+                list.Add(new Ora(kiválaszott, tanár[kiválaszott], new Terem(classroom, szake)));
                 classroomselector(s);
                 check(s);
             }
@@ -194,7 +216,7 @@ namespace orarend
                     classroom = map[kiválaszott];
                 }
                 s.Oraszam[kiválaszott]--;
-                list.Add(new Ora(kiválaszott, "tanár", new Terem(classroom, szake)));
+                list.Add(new Ora(kiválaszott, tanár[kiválaszott], new Terem(classroom, szake)));
                 classroomselector(s);
                 check(s);
             }
