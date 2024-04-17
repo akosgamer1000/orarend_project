@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Media.Animation;
 
 namespace orarend
 {
@@ -54,7 +56,8 @@ namespace orarend
                 case 0:
                 for(int i = 1; i < 6; i++)
                 {
-                    Nap u = new Nap(i, napior(list[i-1],s));
+                        Console.WriteLine($" az i = {i}");
+                        Nap u = new Nap(i, napior(list[i-1],s,i));
                     s.Orarend.Add(u);
                
                 }
@@ -87,15 +90,21 @@ namespace orarend
                 case 0:
                     feltöltés(s,k,i);
                     melyosz++;
+                        if (!File.Exists("lementettA.txt")){
+                        
+                        lementés(s, "lementettA.txt");
+                        }
                     break;
                 case 1:
                     feltöltés(k,s,i);
                     melyosz++;
-                    break;
+						//lementés(k, "lementettB.txt");
+						break;
                 case 2:
                     feltöltés(i,k,s);
                         melyosz++;
-                    break;
+						//lementés(i, "lementettC.txt");
+						break;
             }
             }
         }
@@ -126,10 +135,38 @@ namespace orarend
             }
         }
      
-        public List<Ora> napior(int caunt,Osztaly s)
+        public List<Ora> napior(int caunt,Osztaly s,int p)
         {
+
+			List<Ora> list = new List<Ora>();
+			try
+            {
+                Console.WriteLine("Belépés");
+                var k = new StreamReader("lementettA.txt");
+                if (k.ReadLine() == null)
+                { 
+                    throw new Exception(); 
+                }
+                    for(int l = 1; l < p; l++)
+                    {
+                        for(int c = 0; c < 5; c++)
+                        {
+                            k.ReadLine();
+                        }        
+                    }
+                    for (int sor = 0; sor < 5; sor++)
+                {
+                    var o = k.ReadLine().Split(';');
+                    list.Add(new Ora(o[0], o[1], new Terem(o[2], o[3])));
+                }
+                k.Close();
+                return list;
+
+            }
+            catch (Exception e) {
+            
             Random r= new Random();
-            List<Ora> list = new List<Ora>();
+           
             int randomcaunt = caunt;
             
             for ( int i = 0;i < randomcaunt; i++)
@@ -160,8 +197,9 @@ namespace orarend
                 classroomselector(s);
                 check(s);
             }
-
             return list;
+            }
+
 
 
         }
@@ -228,6 +266,19 @@ namespace orarend
             }
 
             return list;
+
+        }
+        public void lementés(Osztaly a,string url)
+        {
+            var k = new StreamWriter(url);
+            foreach(var p in a.Orarend)
+            {
+               foreach(var g in p.Orak)
+                {
+                    k.WriteLine(g);
+                }
+            }
+            k.Close();
 
         }
         public void check(Osztaly s)
