@@ -195,9 +195,9 @@ namespace orarend
                             };
 
 
-                            int rowIndex = grid.Children.Count / columnCount + 1;
-                            int columnIndex = grid.Children.Count % columnCount + 1;
-                            Grid.SetRow(tb, rowIndex);
+							int columnIndex = grid.Children.Count / columnCount + 1;
+							int rowIndex = grid.Children.Count % columnCount + 1;
+							Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
 
                             Border border = new Border
@@ -248,9 +248,9 @@ namespace orarend
                             };
 
 
-                            int rowIndex = grid.Children.Count / columnCount + 1;
-                            int columnIndex = grid.Children.Count % columnCount + 1;
-                            Grid.SetRow(tb, rowIndex);
+							int columnIndex = grid.Children.Count / columnCount + 1;
+							int rowIndex = grid.Children.Count % columnCount + 1;
+							Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
 
                             Border border = new Border
@@ -300,8 +300,8 @@ namespace orarend
                             };
 
 
-                            int rowIndex = grid.Children.Count / columnCount + 1;
-                            int columnIndex = grid.Children.Count % columnCount + 1;
+                            int columnIndex = grid.Children.Count / columnCount + 1;
+                            int rowIndex = grid.Children.Count % columnCount + 1;
                             Grid.SetRow(tb, rowIndex);
                             Grid.SetColumn(tb, columnIndex);
 

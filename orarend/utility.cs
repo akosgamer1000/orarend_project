@@ -131,10 +131,11 @@ namespace orarend
             Random r= new Random();
             List<Ora> list = new List<Ora>();
             int randomcaunt = caunt;
-            string kiválaszott = "s";
+            
             for ( int i = 0;i < randomcaunt; i++)
             {
-                List <string> l = new List<string>(elérhetőtantárgyak);
+				string kiválaszott = "s";
+				List <string> l = new List<string>(elérhetőtantárgyak);
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
@@ -169,10 +170,11 @@ namespace orarend
             Random r = new Random();
             List<Ora> list = new List<Ora>();
             int randomcaunt = caunt;
-            string kiválaszott = "";
+          
             for (int i = 0; i < randomcaunt; i++)
             {
-                List<string> l = new List<string>(elérhetőtantárgyak);
+				string kiválaszott = "s";
+				List<string> l = new List<string>(elérhetőtantárgyak);
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
@@ -201,10 +203,11 @@ namespace orarend
             Random r = new Random();
             List<Ora> list = new List<Ora>();
             int randomcaunt = caunt;
-            string kiválaszott = "";
+           
             for (int i = 0; i < randomcaunt; i++)
             {
-                List<string> l = new List<string>(elérhetőtantárgyak);
+				string kiválaszott = "s";
+				List<string> l = new List<string>(elérhetőtantárgyak);
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
