@@ -138,8 +138,9 @@ namespace orarend
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
+					 rx = r.Next(elérhetőtantárgyak.Count);
                     kiválaszott = elérhetőtantárgyak[rx];
-                }
+				}
                 l.Remove(kiválaszott);
                 string szake = "normal";
                 if(map.ContainsKey(kiválaszott))
@@ -153,7 +154,7 @@ namespace orarend
                 list.Add(new Ora(kiválaszott, tanár[kiválaszott], new Terem(classroom,szake)));
                 
                 
-                    Console.WriteLine(kiválaszott);
+                   
                 
                 classroomselector(s);
                 check(s);
@@ -175,8 +176,9 @@ namespace orarend
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
+					rx = r.Next(elérhetőtantárgyak.Count);
                     kiválaszott = elérhetőtantárgyak[rx];
-                }
+				}
                 l.Remove(kiválaszott);
                 string szake = "normal";
                 if (map.ContainsKey(kiválaszott))
@@ -206,8 +208,9 @@ namespace orarend
                 int rx = r.Next(elérhetőtantárgyak.Count);
                 while (!l.Contains(kiválaszott))
                 {
+					rx = r.Next(elérhetőtantárgyak.Count);
                     kiválaszott = elérhetőtantárgyak[rx];
-                }
+				}
                 l.Remove(kiválaszott);
                 string szake = "normal";
                 if (map.ContainsKey(kiválaszott))
