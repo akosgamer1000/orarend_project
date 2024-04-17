@@ -55,7 +55,7 @@ namespace orarend
                     oraszam.Add("Prog", 2);
                     oraszam.Add("Hálózat", 2);
                     break;
-                    break;
+                    
                 case 'C':
                     this.osztalyíTipu = 'C';
                     this.oraszam = new Dictionary<string, int>();
