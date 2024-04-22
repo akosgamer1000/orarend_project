@@ -25,7 +25,7 @@ namespace orarend
 
         public override string ToString()
         {
-            return $"{this.tantargyNev};{this.terem.Name};{this.tanar}";
+            return $"{this.tantargyNev};{this.tanar};{this.Terem.Name};{this.Terem.Tipe}";
         }
     }
 }

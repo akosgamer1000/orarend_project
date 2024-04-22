@@ -15,6 +15,7 @@ namespace orarend
         string classroom = "";
         List<int> list = new List<int>() {5,5,5,5,5 };
         List<string> elérhetőtantárgyak;
+        
         int melyosz = 0;
         Dictionary<string, string> map = new Dictionary<string, string>()
         {
@@ -43,9 +44,28 @@ namespace orarend
 
         };
 
+        public List<List<Ora>> Beolvasas(string fajlname)
+        {
+            List<List<Ora>> orarend = new List<List<Ora>>();
+            Ora o = null;
+            List<Ora> n = new List<Ora>();
+            StreamReader sr = new StreamReader(fajlname);
+            while (!sr.EndOfStream)
+            {
+                string[] orak = sr.ReadLine().Split(';');
+                
+                   
+                    o = new Ora(orak[0], orak[1], new Terem(orak[2], orak[3]));
+                
+                n.Add(o);
+            }
+            orarend.Add(n);
+            sr.Close();
+            return orarend;
+        }
 
 
-        public void feltöltés(Osztaly s, Osztaly k,Osztaly l)
+            public void feltöltés(Osztaly s, Osztaly k,Osztaly l)
         {
 			elérhetőtantárgyak = new List<string>();
 			fel(s);
@@ -73,6 +93,7 @@ namespace orarend
                 case 2:
                     for (int i = 1; i < 6; i++)
                     {
+                        Console.WriteLine("hellok");
                         Nap u = new Nap(i, napior3(list[i - 1], s));
                         s.Orarend.Add(u);
 
@@ -80,6 +101,25 @@ namespace orarend
                     break;
             }
         }
+        public List<Nap> converter(List<List<Ora>> orarendLista)
+        {
+            List<Nap> napok = new List<Nap>();
+
+           
+
+            for (int i = 0; i < orarendLista.Count; i++)
+            {
+                if (i < 5)
+                {
+                    Nap nap = new Nap(i, orarendLista[i]);
+                    napok.Add(nap);
+                }
+                
+            }
+
+            return napok;
+        }
+    
         public void váltás(Osztaly s,Osztaly k , Osztaly i) 
         {
             for (int l = 0; l < 5; l++)
@@ -88,23 +128,53 @@ namespace orarend
             switch (melyosz)
             {
                 case 0:
-                    feltöltés(s,k,i);
-                    melyosz++;
+                  
+                    
                         if (!File.Exists("lementettA.txt")){
-                        
-                        lementés(s, "lementettA.txt");
+                            feltöltés(s, k, i);
+                            lementés(s, "lementettA.txt");
                         }
-                    break;
-                case 1:
-                    feltöltés(k,s,i);
-                    melyosz++;
-						//lementés(k, "lementettB.txt");
-						break;
-                case 2:
-                    feltöltés(i,k,s);
+                        else
+                        {
+                            var p = Beolvasas("lementettA.txt");
+                            s.Orarend=converter(p);
+
+                        }
                         melyosz++;
-						//lementés(i, "lementettC.txt");
-						break;
+                        break;
+                case 1:
+                        melyosz++;
+                        if (!File.Exists("lementettB.txt"))
+                        {
+                         
+                            feltöltés(k,s,i);
+                            lementés(k, "lementettB.txt");
+
+                        }
+                        else
+                        {
+                            var p = Beolvasas("lementettB.txt");
+                            k.Orarend = converter(p);
+                        }
+
+                        Console.WriteLine(melyosz);
+                        break;
+                case 2:
+                    
+                        
+                        if (!File.Exists("lementettC.txt"))
+                        {
+                            
+                            feltöltés(i, k, s);
+                            lementés(i, "lementettC.txt");
+                        }
+                        else
+                        {
+                            var p = Beolvasas("lementettC.txt");
+                            i.Orarend = converter(p);
+                        }
+                        melyosz++;
+                        break;
             }
             }
         }
@@ -139,31 +209,8 @@ namespace orarend
         {
 
 			List<Ora> list = new List<Ora>();
-			try
-            {
-                Console.WriteLine("Belépés");
-                var k = new StreamReader("lementettA.txt");
-                if (k.ReadLine() == null)
-                { 
-                    throw new Exception(); 
-                }
-                    for(int l = 1; l < p; l++)
-                    {
-                        for(int c = 0; c < 5; c++)
-                        {
-                            k.ReadLine();
-                        }        
-                    }
-                    for (int sor = 0; sor < 5; sor++)
-                {
-                    var o = k.ReadLine().Split(';');
-                    list.Add(new Ora(o[0], o[1], new Terem(o[2], o[3])));
-                }
-                k.Close();
-                return list;
-
-            }
-            catch (Exception e) {
+			
+           
             
             Random r= new Random();
            
@@ -198,8 +245,7 @@ namespace orarend
                 check(s);
             }
             return list;
-            }
-
+          
 
 
         }
@@ -294,3 +340,4 @@ namespace orarend
         }
     }
 }
+
